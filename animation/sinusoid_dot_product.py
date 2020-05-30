@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.widgets import TextBox
 
 fig, ax = plt.subplots(3, 1, 
                        gridspec_kw={
@@ -13,7 +14,7 @@ y_cos = np.cos(x)
 y_dot = y_sin * y_cos
 
 ax[0].plot(x,np.sin(x))
-ax[0].plot(x,y_sin)
+line1, = ax[0].plot(x,y_sin)
 ax[1].hist(x[:-1], bins = x,alpha=0.5,
                           edgecolor='#EFB28C',
                           color='#EED19C', weights = y_cos[:-1])
@@ -24,5 +25,21 @@ ax[2].plot(x,y_cos * np.sin(x))
 
 ax[0].axes.xaxis.set_ticklabels([])
 ax[0].axes.yaxis.set_ticklabels([])
+
+def submit(text):
+    global line1
+    try:
+        float(text)
+    except ValueError:
+        return
+    line1.remove()
+    x_plus = np.arange(float(text),TWOPI + float(text),0.5)
+    y_sin = np.sin(x_plus)
+    line1, = ax[0].plot(x,y_sin)
+    plt.draw()
+
+axbox = plt.axes([0.1, 0.05, 0.8, 0.075])
+text_box = TextBox(axbox, 'Evaluate', initial='hellp')
+text_box.on_submit(submit)
 
 plt.show()
