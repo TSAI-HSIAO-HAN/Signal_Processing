@@ -4,7 +4,9 @@ from matplotlib.widgets import TextBox
 
 fig, ax = plt.subplots(3, 1, 
                        gridspec_kw={
-                        'height_ratios': [1, 1, 1]})
+                        'height_ratios': [1, 1, 1]},
+                       figsize=(6, 7))
+plt.subplots_adjust(left = 0.1, bottom = 0.2, wspace = 0.2,hspace = 0.5)
 
 TWOPI = 2 * np.pi
 x = np.arange(0,TWOPI,0.5)
@@ -38,7 +40,7 @@ def submit(text):
     line1, = ax[0].plot(x,y_sin)
     plt.draw()
 
-axbox = plt.axes([0.1, 0.05, 0.8, 0.075])
+axbox = plt.axes([0.2, 0.05, 0.5, 0.07])
 text_box = TextBox(axbox, 'Evaluate', initial='hellp')
 text_box.on_submit(submit)
 
