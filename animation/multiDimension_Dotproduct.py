@@ -28,14 +28,14 @@ axbox2 = plt.axes([0.15, 0.06, 0.13, 0.05])
 axbutton = plt.axes([0.3 ,0.06, 0.13, 0.05])
 
 dimension_text = plt.text(1.3,2.4,'dimension: ' + str(dimension))
-v1_text = plt.text(1.3,1.8,'vertex 1: ' + str(v1))
-v2_text = plt.text(1.3,1.2,'vertex 2: ' + str(v2))
+v1_text = plt.text(1.3,1.8,'vector 1: ' + str(v1))
+v2_text = plt.text(1.3,1.2,'vector 2: ' + str(v2))
 dot_text = plt.text(1.3, 0.4, 'dot product value: ' + str(dot_value))
 button = Button(axbutton, 'show')
 
 textbox0 = TextBox(axbox0, 'dimension')
-textbox1 = TextBox(axbox1, 'vertex 1')
-textbox2 = TextBox(axbox2, 'vertex 2')
+textbox1 = TextBox(axbox1, 'vector 1')
+textbox2 = TextBox(axbox2, 'vector 2')
 
 def draw():
     multi = np.multiply(v1,v2)
@@ -77,8 +77,8 @@ def setDimension(text):
         v2 = temp2
 
         dimension_text.set_text('dimension: ' + str(dimension))
-        v1_text.set_text('vertex 1: ' + str(v1))
-        v2_text.set_text('vertex 2: ' + str(v2))
+        v1_text.set_text('vector 1: ' + str(v1))
+        v2_text.set_text('vector 2: ' + str(v2))
         base_v = np.arange(dimension)
         bins = np.arange(dimension+1)
         dot_value = np.dot(v1, v2)
@@ -96,7 +96,7 @@ def setV1(text):
             lst[i] = templst[i]
         v1 = lst
         dot_value = np.dot(v1, v2)
-        v1_text.set_text('vertex 1: ' + str(v1))
+        v1_text.set_text('vector 1: ' + str(v1))
         dot_text.set_text('dot product value: ' + str(dot_value))
     except ValueError:
         return
@@ -111,7 +111,7 @@ def setV2(text):
             lst[i] = templst[i]
         v2 = lst
         dot_value = np.dot(v1, v2)
-        v2_text.set_text('vertex 2: ' + str(v2))
+        v2_text.set_text('vector 2: ' + str(v2))
         dot_text.set_text('dot product value: ' + str(dot_value))
     except ValueError:
         return
