@@ -11,6 +11,10 @@ fig, ax = plt.subplots(3, 1,
                        gridspec_kw={
                            'height_ratios':[1,1,1]},
                        figsize = (6,7))
+ax[0].get_xaxis().set_visible(False)
+ax[1].get_xaxis().set_visible(False)
+ax[2].get_xaxis().set_visible(False)
+
 plt.subplots_adjust(left = 0.1, bottom = 0.3, wspace = 0.2, hspace = 0.5)
 
 #define variables
@@ -38,6 +42,9 @@ textbox1 = TextBox(axbox1, 'vector 1')
 textbox2 = TextBox(axbox2, 'vector 2')
 
 def draw():
+    ax[0].axhline(0, color = 'k', linewidth = 0.5)
+    ax[1].axhline(0, color = 'k', linewidth = 0.5)
+    ax[2].axhline(0, color = 'k', linewidth = 0.5)
     multi = np.multiply(v1,v2)
     arr0 = ax[0].hist(base_v, bins = bins,weights = v1,alpha=0.5,
                               edgecolor='#EFB28C',
